@@ -16,4 +16,13 @@ public class Car {
     public int getPosition() {
         return position;
     }
+
+    public int moveCar() {
+        return position ++;
+    }
+
+    @Override
+    public String toString() {
+        return "carName: "+this.carName;
+    }
 }

@@ -9,4 +9,20 @@ public class OutputView {
     public void printAdvanceNumberInputText() {
         System.out.println("시도할 회수는 몇회인가요?");
     }
+
+    public void printResult() {
+        System.out.println("실행 결과");
+    }
+
+    public void printCarPosition(String name, int position) {
+        String p = printPosition(position);
+        System.out.println(name + " : " + p);
+    }
+
+    public String printPosition(int position) {
+        String p = "";
+        for (int i = 0; i < position; i ++) {
+            p += "-";
+        } return p;
+    }
 }

@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,7 @@ public class CarController {
     public void start() {
         inputStart();
         inputCount();
-        System.out.println(count);
+        playGame();
     }
 
     public void inputStart() {
@@ -38,5 +39,25 @@ public class CarController {
     public void inputCount() {
         outputView.printAdvanceNumberInputText();
         count = Integer.parseInt(inputView.countInput());
+    }
+
+    public void playGame() {
+        outputView.printResult();
+        int number = 0;
+        while (number < count) {
+            for (Car car: cars) {
+                carMove(car, car.getCarName());
+                outputView.printCarPosition(car.getCarName(), car.getPosition());
+            }
+            System.out.println();
+            number += 1;
+        }
+    }
+
+    public void carMove(Car car, String carName) {
+        int randomNum = Randoms.pickNumberInRange(0,9);
+        if (randomNum >= 4) {
+            car.moveCar();
+        }
     }
 }
