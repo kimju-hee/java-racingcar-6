@@ -19,6 +19,8 @@ public class CarController {
         inputStart();
         inputCount();
         playGame();
+        List<String> winner = findWinner(cars);
+        printWinner(winner);
     }
 
     public void inputStart() {
@@ -59,5 +61,28 @@ public class CarController {
         if (randomNum >= 4) {
             car.moveCar();
         }
+    }
+
+    public List<String> findWinner(List<Car> cars) {
+        List<String> winner = new ArrayList<>();
+        int max = 0;
+        for (Car c : cars) {
+            int p = c.getPosition();
+            if (p > max) {
+                max = p;
+            }
+        }
+
+        for (Car c : cars) {
+            String name = c.getCarName();
+            int position = c.getPosition();
+            if (position == max) {
+                winner.add(name);
+            }
+        } return winner;
+    }
+
+    public void printWinner(List<String> winner) {
+        outputView.printWinner(winner);
     }
 }
